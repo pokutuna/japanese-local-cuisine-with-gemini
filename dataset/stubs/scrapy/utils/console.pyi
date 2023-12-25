@@ -1,0 +1,6 @@
+from _typeshed import Incomplete
+
+DEFAULT_PYTHON_SHELLS: Incomplete
+
+def get_shell_embed_func(shells: Incomplete | None = None, known_shells: Incomplete | None = None): ...
+def start_python_console(namespace: Incomplete | None = None, banner: str = '', shells: Incomplete | None = None) -> None: ...

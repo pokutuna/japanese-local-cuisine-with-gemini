@@ -2,12 +2,8 @@
 name = "dataset"
 version = "0.1.0"
 description = "Add your description here"
-authors = [
-    { name = "pokutuna", email = "mail@pokutuna.com" }
-]
-dependencies = [
-    "scrapy>=2.11.0",
-]
+authors = [{ name = "pokutuna", email = "mail@pokutuna.com" }]
+dependencies = ["scrapy>=2.11.0"]
 readme = "README.md"
 requires-python = ">= 3.8"
 
@@ -17,7 +13,10 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = ["mypy>=1.8.0"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.mypy]
+mypy_path = "stubs"

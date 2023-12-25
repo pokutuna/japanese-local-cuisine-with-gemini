@@ -1,0 +1,3 @@
+from scrapy.utils.deprecate import ScrapyDeprecationWarning as ScrapyDeprecationWarning
+
+def wrap_loader_context(function, context): ...

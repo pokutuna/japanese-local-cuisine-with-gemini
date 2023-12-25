@@ -1,0 +1,16 @@
+from argparse import Namespace
+from scrapy import Spider as Spider
+from scrapy.commands import ScrapyCommand as ScrapyCommand
+from scrapy.exceptions import UsageError as UsageError
+from scrapy.http import Request as Request
+from scrapy.utils.datatypes import SequenceExclude as SequenceExclude
+from scrapy.utils.spider import DefaultSpider as DefaultSpider, spidercls_for_request as spidercls_for_request
+from typing import List
+
+class Command(ScrapyCommand):
+    requires_project: bool
+    def syntax(self): ...
+    def short_desc(self): ...
+    def long_desc(self): ...
+    def add_options(self, parser) -> None: ...
+    def run(self, args: List[str], opts: Namespace) -> None: ...

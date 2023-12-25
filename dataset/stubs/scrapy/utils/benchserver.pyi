@@ -1,0 +1,6 @@
+from twisted.web.resource import Resource
+
+class Root(Resource):
+    isLeaf: bool
+    def getChild(self, name, request): ...
+    def render(self, request): ...

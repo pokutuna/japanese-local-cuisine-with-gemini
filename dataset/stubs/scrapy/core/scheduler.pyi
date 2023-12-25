@@ -1,0 +1,53 @@
+from _typeshed import Incomplete
+from abc import abstractmethod
+from scrapy.crawler import Crawler as Crawler
+from scrapy.dupefilters import BaseDupeFilter as BaseDupeFilter
+from scrapy.http.request import Request as Request
+from scrapy.spiders import Spider as Spider
+from scrapy.statscollectors import StatsCollector as StatsCollector
+from scrapy.utils.job import job_dir as job_dir
+from scrapy.utils.misc import create_instance as create_instance, load_object as load_object
+from twisted.internet.defer import Deferred as Deferred
+from typing import Any, Optional, TypeVar
+from typing_extensions import Self
+
+logger: Incomplete
+
+class BaseSchedulerMeta(type):
+    def __instancecheck__(cls, instance: Any) -> bool: ...
+    def __subclasscheck__(cls, subclass: type) -> bool: ...
+
+class BaseScheduler(metaclass=BaseSchedulerMeta):
+    @classmethod
+    def from_crawler(cls, crawler: Crawler) -> Self: ...
+    def open(self, spider: Spider) -> Optional[Deferred]: ...
+    def close(self, reason: str) -> Optional[Deferred]: ...
+    @abstractmethod
+    def has_pending_requests(self) -> bool: ...
+    @abstractmethod
+    def enqueue_request(self, request: Request) -> bool: ...
+    @abstractmethod
+    def next_request(self) -> Optional[Request]: ...
+SchedulerTV = TypeVar('SchedulerTV', bound='Scheduler')
+
+class Scheduler(BaseScheduler):
+    df: Incomplete
+    dqdir: Incomplete
+    pqclass: Incomplete
+    dqclass: Incomplete
+    mqclass: Incomplete
+    logunser: Incomplete
+    stats: Incomplete
+    crawler: Incomplete
+    def __init__(self, dupefilter: BaseDupeFilter, jobdir: Optional[str] = None, dqclass: Incomplete | None = None, mqclass: Incomplete | None = None, logunser: bool = False, stats: Optional[StatsCollector] = None, pqclass: Incomplete | None = None, crawler: Optional[Crawler] = None) -> None: ...
+    @classmethod
+    def from_crawler(cls, crawler: Crawler) -> SchedulerTV: ...
+    def has_pending_requests(self) -> bool: ...
+    spider: Incomplete
+    mqs: Incomplete
+    dqs: Incomplete
+    def open(self, spider: Spider) -> Optional[Deferred]: ...
+    def close(self, reason: str) -> Optional[Deferred]: ...
+    def enqueue_request(self, request: Request) -> bool: ...
+    def next_request(self) -> Optional[Request]: ...
+    def __len__(self) -> int: ...

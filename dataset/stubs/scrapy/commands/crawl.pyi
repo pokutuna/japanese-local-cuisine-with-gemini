@@ -1,0 +1,9 @@
+from scrapy.commands import BaseRunSpiderCommand as BaseRunSpiderCommand
+from scrapy.exceptions import UsageError as UsageError
+
+class Command(BaseRunSpiderCommand):
+    requires_project: bool
+    def syntax(self): ...
+    def short_desc(self): ...
+    exitcode: int
+    def run(self, args, opts) -> None: ...
